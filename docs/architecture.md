@@ -93,3 +93,13 @@ winget install TheWiseMonkey.AzureVPN-CLI
 - Profiles must be imported into AzureVPN-CLI from a `.AzureVpnProfile.xml` file.
 - Existing profiles created directly inside the Azure VPN Client app are not visible to AzureVPN-CLI unless their XML is exported and imported here.
 - AzureVPN-CLI creates `VpnPlugInProfile` entries that target the Azure VPN Client plug-in package `Microsoft.AzureVpn_8wekyb3d8bbwe`. The actual VPN tunnel and authentication are still handled by the Azure VPN Client.
+- A profile imported here is a separate entry from the one in the Azure VPN Client app, even with the same name: `vpn <name> status` reports only the entry created here, and says `Disconnected` when the tunnel was opened from the app. Keep only one of the two entries connected at a time.
+
+## Azure VPN Client compatibility
+
+Checked against Azure VPN Client 4.0.8.0 (October 2026) with an Entra ID (AAD), OpenVPN/TCP profile:
+
+- The plug-in package family name is unchanged.
+- The entry created by `vpn import` matches the one the app creates for the same profile: same plug-in, the exported XML stored as-is in `CustomConfiguration`, and `https://<fqdn>` server URIs.
+- Profile XML options added in 4.x (device SSO, disabling certificate pinning) live inside that XML, so they pass through without changes here.
+- For connections that do not start from its own UI, the plug-in gets the Entra ID token silently from its cached account, and shows a toast when the user has to sign in.

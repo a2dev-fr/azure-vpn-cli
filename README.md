@@ -47,8 +47,8 @@ vpn my-vpn disconnect
 
 ## Requirements
 
-- Windows 10 19041 or newer.
-- [Azure VPN Client](https://apps.microsoft.com/detail/9np355qt2sqb) installed from the Microsoft Store.
+- Windows 11. The package installs on Windows 10 19041 or newer, but Microsoft only supports the Azure VPN Client on Windows 11.
+- [Azure VPN Client](https://apps.microsoft.com/detail/9np355qt2sqb) 4.x installed from the Microsoft Store. Tested with 4.0.8.0 (October 2026).
 
 ## Development
 
