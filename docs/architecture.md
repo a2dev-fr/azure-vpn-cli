@@ -103,3 +103,4 @@ Checked against Azure VPN Client 4.0.8.0 (October 2026) with an Entra ID (AAD), 
 - The entry created by `vpn import` matches the one the app creates for the same profile: same plug-in, the exported XML stored as-is in `CustomConfiguration`, and `https://<fqdn>` server URIs.
 - Profile XML options added in 4.x (device SSO, disabling certificate pinning) live inside that XML, so they pass through without changes here.
 - For connections that do not start from its own UI, the plug-in gets the Entra ID token silently from its cached account, and shows a toast when the user has to sign in.
+- `connect` and `disconnect` complete in about 2 seconds. DNS for the tunnel comes from an NRPT rule set by the plug-in, so `Get-DnsClientServerAddress` shows no DNS server on the VPN interface.
